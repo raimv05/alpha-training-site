@@ -338,9 +338,12 @@ html body .premium-header .navbar-brand img {
     font-size: 18px;
   }
 
-  .home-hero {
+  .home-hero,
+  .reconstructed_hero,
+  .banner_part.reconstructed_hero {
     height: auto !important;
     min-height: auto !important;
+    overflow: visible !important;
     padding-top: 110px !important;
     padding-bottom: 60px !important;
   }
