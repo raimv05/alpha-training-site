@@ -69,9 +69,10 @@ section {
   margin: 0 !important;
 }
 
-.header-logo,
-.premium-header .navbar-brand img {
-  display: block;
+html body header.premium-header a.navbar-brand img.header-logo,
+html body header.premium-header a.navbar-brand img,
+html body .premium-header .navbar-brand img {
+  display: block !important;
   height: 52px !important;
   width: auto !important;
   max-width: 220px !important;
@@ -273,11 +274,13 @@ section {
     width: 100% !important;
   }
 
-  .header-logo,
-  .premium-header .navbar-brand img {
+  html body header.premium-header a.navbar-brand img.header-logo,
+  html body header.premium-header a.navbar-brand img,
+  html body .premium-header .navbar-brand img {
     height: 38px !important;
     width: auto !important;
     max-width: 140px !important;
+    margin: 0 !important;
   }
 
   .alpha-navbar .navbar-collapse {
