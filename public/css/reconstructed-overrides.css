@@ -306,8 +306,10 @@ html body .premium-header .navbar-brand img {
   }
 
   .reconstructed_hero {
-    min-height: auto;
-    padding: 90px 0 40px !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    padding: 100px 0 60px !important;
   }
 
   .reconstructed_hero .banner_text {
@@ -334,6 +336,34 @@ html body .premium-header .navbar-brand img {
 
   .reconstructed_hero .banner_text p {
     font-size: 18px;
+  }
+
+  .home-hero {
+    height: auto !important;
+    min-height: auto !important;
+    padding-top: 110px !important;
+    padding-bottom: 60px !important;
+  }
+
+  .home-hero .banner_text {
+    min-height: auto !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-hero-actions {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin-top: 24px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    width: 100% !important;
+    text-align: center !important;
+    min-height: 48px !important;
   }
 }
 
