@@ -28,7 +28,7 @@ body {
   font-family: "Roboto", sans-serif;
   color: var(--alpha-ink);
   background: #fff;
-  padding-top: 76px;
+  padding-top: 96px;
 }
 
 /* Navbar */
@@ -134,8 +134,8 @@ section {
 /* Hero */
 .reconstructed_hero {
   position: relative !important;
-  min-height: calc(100vh - 76px);
-  padding: 64px 0 36px !important;
+  min-height: calc(100vh - 96px);
+  padding: 100px 0 36px !important;
   background: #fff !important;
   background-image: none !important;
   border: 0 !important;
@@ -260,6 +260,10 @@ section {
 }
 
 @media (max-width: 991px) {
+  body {
+    padding-top: 88px !important;
+  }
+
   .alpha-navbar {
     min-height: 68px;
     display: flex !important;
@@ -300,7 +304,7 @@ section {
 
   .reconstructed_hero {
     min-height: auto;
-    padding: 64px 0 !important;
+    padding: 90px 0 40px !important;
   }
 
   .reconstructed_hero .banner_text {
@@ -396,7 +400,7 @@ section {
 
 .home-hero {
   min-height: 960px;
-  padding-top: 130px !important;
+  padding-top: 160px !important;
   padding-bottom: 80px !important;
 }
 
