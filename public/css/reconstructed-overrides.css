@@ -262,13 +262,18 @@ section {
 @media (max-width: 991px) {
   .alpha-navbar {
     min-height: 68px;
+    display: flex !important;
+    flex-flow: row nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
   }
 
   .header-logo,
   .premium-header .navbar-brand img {
-    height: 44px !important;
+    height: 38px !important;
     width: auto !important;
-    max-width: 180px !important;
+    max-width: 140px !important;
   }
 
   .alpha-navbar .navbar-collapse {
