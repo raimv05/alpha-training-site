@@ -1670,3 +1670,60 @@ html.dark-mode .footer_map_link {
 html.dark-mode .footer_map_link:hover {
   color: #589df0 !important;
 }
+
+/* ── Footer Contact Information ── */
+.footer_contact_info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 14px !important;
+  margin-top: 5px !important;
+}
+
+.contact_item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+}
+
+.contact_svg {
+  color: #3a77ff !important;
+  flex-shrink: 0 !important;
+  margin-top: 3px !important;
+  transition: color 0.3s ease !important;
+}
+
+.contact_item:hover .contact_svg {
+  color: #fff !important;
+}
+
+html.dark-mode .contact_item:hover .contact_svg {
+  color: #589df0 !important;
+}
+
+.contact_text {
+  color: #8b9cc0 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.contact_link {
+  text-decoration: none !important;
+  transition: color 0.25s ease !important;
+}
+
+.contact_link:hover {
+  color: #fff !important;
+}
+
+html.dark-mode .contact_link:hover {
+  color: #589df0 !important;
+}
+
+html.dark-mode .contact_text {
+  color: #6b7a9a !important;
+}
+
+html.dark-mode .contact_text.contact_link:hover {
+  color: #589df0 !important;
+}
