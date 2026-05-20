@@ -700,20 +700,35 @@ html body .premium-header .navbar-brand img {
 }
 
 .home-course-card {
-  height: calc(100% - 30px);
-  margin-bottom: 30px;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(58, 119, 255, 0.1) !important;
+  box-shadow: 0 10px 30px rgba(58, 119, 255, 0.06) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  margin-bottom: 0 !important;
+}
+
+.home-course-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(58, 119, 255, 0.12) !important;
 }
 
 .home-course-card .special_img {
-  height: 230px;
-  object-fit: cover;
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
 }
 
 .home-course-card .special_cource_text {
-  display: flex;
-  min-height: 260px;
-  flex-direction: column;
-  padding-bottom: 20px;
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
+  min-height: auto !important;
 }
 
 .home-course-card h3 {
@@ -721,11 +736,15 @@ html body .premium-header .navbar-brand img {
   font-family: "Poppins", sans-serif;
   font-size: 22px !important;
   line-height: 1.25;
+  margin-top: 8px !important;
+  margin-bottom: 12px !important;
 }
 
 .home-course-card p {
   color: #59677c !important;
   line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+  flex-grow: 1 !important;
 }
 
 .home-section-action {
@@ -739,41 +758,58 @@ html body .premium-header .navbar-brand img {
     linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
 }
 
-.home-activity-slide {
-  min-width: 380px;
-  border: 1px solid rgba(58, 119, 255, 0.12);
-  background: rgba(255, 255, 255, 0.86) !important;
-  box-shadow: 0 16px 36px rgba(58, 119, 255, 0.14) !important;
+.home-activity-slide,
+.home-activity-card {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(58, 119, 255, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(58, 119, 255, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  min-width: 0 !important;
 }
 
-.home-activity-slide .activity_img {
-  height: 220px;
-  object-fit: cover;
+.home-activity-slide:hover,
+.home-activity-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 35px rgba(58, 119, 255, 0.15) !important;
+}
+
+.home-activity-slide .activity_img,
+.home-activity-card .activity_thumb {
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: cover !important;
+  border-bottom: 1px solid rgba(58, 119, 255, 0.08) !important;
+}
+
+.activity_content_wrapper {
+  padding: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-grow: 1 !important;
 }
 
 .activity_title,
 .home-activity-card h4 {
-  color: #0e1f4d;
-  font-family: "Poppins", sans-serif;
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.28;
+  color: #0e1f4d !important;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  margin-bottom: 12px !important;
 }
 
 .activity_desc,
 .home-activity-card p {
-  color: #64748b;
-  line-height: 1.65;
-}
-
-.home-activity-card {
-  height: calc(100% - 20px);
-  border: 1px solid rgba(58, 119, 255, 0.12);
-}
-
-.home-activity-card .activity_thumb {
-  height: 210px;
-  object-fit: cover;
+  color: #59677c !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  flex-grow: 1 !important;
 }
 
 .testimonial_section_3d {
@@ -842,9 +878,6 @@ html body .premium-header .navbar-brand img {
     height: 190px;
   }
 
-  .home-activity-slide {
-    min-width: 300px;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════

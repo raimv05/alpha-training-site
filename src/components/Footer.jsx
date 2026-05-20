@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="footer_block">
               <h4 className="footer_title">Our Location</h4>
               <div className="row g-4 align-items-center">
-                <div className="col-md-5">
+                <div className="col-12 col-xl-5">
                   <div className="footer_map_wrapper">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.73024844393!2d76.72481197630444!3d30.68241347460981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390febfe87e901c3%3A0xaf2bcb5f0c8e1abf!2sAlpha%20IT%20Managed%20Services%20Private%20Limited!5e0!3m2!1sen!2sin!4v1716187900000!5m2!1sen!2sin"
@@ -64,7 +64,7 @@ export default function Footer() {
                     </a>
                   </div>
                 </div>
-                <div className="col-md-7">
+                <div className="col-12 col-xl-7">
                   <div className="footer_contact_info">
                     <div className="contact_item">
                       <svg className="contact_svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

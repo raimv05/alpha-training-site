@@ -74,6 +74,21 @@ const activities = [
     image: "/img/activity/male-speaker-addresses-media-press-conference-standing-behind-podium-multiple-microphones-scene-represents-359623480-ezgif.com-gif-maker.webp",
     text: "Professionals from top companies share career roadmaps, project stories, and interview guidance.",
   },
+  {
+    title: "Hackathons & Coding Challenges",
+    image: "/img/activity/images-ezgif.com-gif-maker.gif",
+    text: "Students compete, collaborate, and build innovative solutions in real-time challenges.",
+  },
+  {
+    title: "Placement & Mock Interviews",
+    image: "/img/activity/Untitled-design-3-ezgif.com-gif-maker.gif",
+    text: "HR sessions, mock technical interviews, and resume-building for job readiness.",
+  },
+  {
+    title: "Team Projects & Presentations",
+    image: "/img/activity/presentation-office-work-ezgif.com-gif-maker.gif",
+    text: "Students showcase their work through team-driven real IT project demos.",
+  },
 ];
 
 const stats = [
@@ -123,7 +138,7 @@ export default function Home() {
       <section className="feature_part home-feature-section">
         <div className="container">
           <div className="row align-items-stretch">
-            <div className="col-sm-6 col-xl-3">
+            <div className="col-12 col-md-6 col-lg-3 mb-4">
               <div className="single_feature_text feature_card_equal home-intro-card">
                 <span className="home-kicker">Why Choose Us</span>
                 <h2>Training Built Around Real Work</h2>
@@ -135,7 +150,7 @@ export default function Home() {
               </div>
             </div>
             {features.map((feature) => (
-              <div className="col-sm-6 col-xl-3" key={feature.title}>
+              <div className="col-12 col-md-6 col-lg-3 mb-4" key={feature.title}>
                 <div className="single_feature feature_card_gradient home-feature-card">
                   <div className="single_feature_part">
                     <div className="iconContainer">
@@ -186,7 +201,7 @@ export default function Home() {
           </div>
           <div className="row">
             {courses.map((course) => (
-              <div className="col-sm-6 col-lg-4" key={course.title}>
+              <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.title}>
                 <div className="single_special_cource home-course-card">
                   <img src={course.image} className="special_img" alt={course.title} />
                   <div className="special_cource_text">
@@ -213,28 +228,15 @@ export default function Home() {
             <h2>Learning beyond the classroom</h2>
             <p>Workshops, visits, guest lectures, challenges, and presentations give students real exposure.</p>
           </div>
-          <div className="activities_carousel_wrapper">
-            <div className="activities_carousel">
-              {activities.map((activity) => (
-                <div className="activity_slide home-activity-slide" key={activity.title}>
-                  <img src={activity.image} className="activity_img" alt={activity.title} />
-                  <h4 className="activity_title">{activity.title}</h4>
-                  <p className="activity_desc">{activity.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="row mt-5">
-            {[
-              ["/img/activity/images-ezgif.com-gif-maker.gif", "Hackathons & Coding Challenges", "Students compete, collaborate, and build innovative solutions in real-time challenges."],
-              ["/img/activity/Untitled-design-3-ezgif.com-gif-maker.gif", "Placement & Mock Interviews", "HR sessions, mock technical interviews, and resume-building for job readiness."],
-              ["/img/activity/presentation-office-work-ezgif.com-gif-maker.gif", "Team Projects & Presentations", "Students showcase their work through team-driven real IT project demos."],
-            ].map(([image, title, text]) => (
-              <div className="col-lg-4 col-md-6" key={title}>
+          <div className="row g-4 justify-content-center">
+            {activities.map((activity) => (
+              <div className="col-12 col-md-6 col-lg-4" key={activity.title}>
                 <div className="activity_card home-activity-card">
-                  <img src={image} alt={title} className="activity_thumb" />
-                  <h4>{title}</h4>
-                  <p>{text}</p>
+                  <img src={activity.image} className="activity_thumb" alt={activity.title} />
+                  <div className="activity_content_wrapper">
+                    <h4>{activity.title}</h4>
+                    <p>{activity.text}</p>
+                  </div>
                 </div>
               </div>
             ))}
