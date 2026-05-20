@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Testimonials_2 from "../components/Testimonials_2";
+import { getAssetUrl } from "../utils/assets.js";
 
 export default function About() {
   return (
@@ -27,7 +28,7 @@ export default function About() {
             <div className="col-lg-3">
               <div className="premium_feature_card">
                 <div className="pf_icon">
-                  <img src="/icons/future.gif" alt="icon" />
+                  <img src={getAssetUrl("/icons/future.gif")} alt="icon" />
                 </div>
                 <h4>Better Future</h4>
                 <p>Learn with top instructors, industry projects & skill-based modules designed to prepare you for real jobs.</p>
@@ -36,7 +37,7 @@ export default function About() {
             <div className="col-lg-3">
               <div className="premium_feature_card">
                 <div className="pf_icon">
-                  <img src="/icons/training.gif" alt="icon" />
+                  <img src={getAssetUrl("/icons/training.gif")} alt="icon" />
                 </div>
                 <h4>Qualified Trainers</h4>
                 <p>Learn from experienced trainers working in top companies with deep domain knowledge & mentoring skills.</p>
@@ -45,7 +46,7 @@ export default function About() {
             <div className="col-lg-3">
               <div className="premium_feature_card">
                 <div className="pf_icon">
-                  <img src="/icons/job.gif" alt="icon" />
+                  <img src={getAssetUrl("/icons/job.gif")} alt="icon" />
                 </div>
                 <h4>Job Opportunities</h4>
                 <p>We ensure placement assistance, industry networking, project-based upskilling & internship support.</p>
@@ -60,7 +61,7 @@ export default function About() {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="premium_learning_img">
-                <img src="/img/learning_img.gif" alt="learning" />
+                <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
               </div>
             </div>
             <div className="col-lg-6">

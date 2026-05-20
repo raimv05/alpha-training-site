@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { getAssetUrl } from "../utils/assets.js";
 
 const tabs = [
   {
@@ -53,12 +54,12 @@ export default function Activities() {
         <div className="video_grid">
           {current.videos.map((video) => (
             <video controls className="activity_video" key={video}>
-              <source src={`${video}?v=${active}`} type="video/mp4" />
+              <source src={`${getAssetUrl(video)}?v=${active}`} type="video/mp4" />
             </video>
           ))}
         </div>
         <div className="image_grid">
-          {current.images.map((image) => <img src={image} className="activity_img" alt="activity" key={image} />)}
+          {current.images.map((image) => <img src={getAssetUrl(image)} className="activity_img" alt="activity" key={image} />)}
         </div>
       </div>
     </section>

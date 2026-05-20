@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
 import "./Testimonials_2.css";
+import { getAssetUrl } from "../utils/assets.js";
 
 const testimonialData = [
   {
@@ -121,7 +122,7 @@ function TestimonialCard({ data }) {
       {/* Logo Area */}
       <div className="t2-logo-area">
         <img
-          src={data.companyLogo}
+          src={getAssetUrl(data.companyLogo)}
           alt="Alpha IT Managed Services"
           className="t2-company-logo"
           loading="lazy"
@@ -131,7 +132,7 @@ function TestimonialCard({ data }) {
       {/* Avatar */}
       <div className="t2-avatar-wrap">
         <img
-          src={data.clientAvatar}
+          src={getAssetUrl(data.clientAvatar)}
           alt={`Photo of ${data.clientName}`}
           className="t2-avatar"
           loading="lazy"

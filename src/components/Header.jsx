@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
+import { getAssetUrl } from "../utils/assets.js";
 
 const navItems = [
   { path: "/", label: "Home" },
@@ -27,7 +28,7 @@ export default function Header() {
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light alpha-navbar">
           <Link className="navbar-brand" to="/">
-            <img src="/img/logo-cropped.png" alt="Alpha IT Managed Services" className="header-logo" />
+            <img src={getAssetUrl("/img/logo-cropped.png")} alt="Alpha IT Managed Services" className="header-logo" />
           </Link>
           <button
             className="navbar-toggler custom-toggler"

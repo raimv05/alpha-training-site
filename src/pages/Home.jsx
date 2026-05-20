@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Testimonials2 from "../components/Testimonials_2";
+import { getAssetUrl } from "../utils/assets.js";
 
 const features = [
   {
@@ -103,7 +104,7 @@ export default function Home() {
     <>
       <section className="banner_part reconstructed_hero home-hero">
         <div className="hero-bg-tint" />
-        <img className="hero-illustration" src="/img/banner_img.png" alt="" aria-hidden="true" />
+        <img className="hero-illustration" src={getAssetUrl("/img/banner_img.png")} alt="" aria-hidden="true" />
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-7 col-xl-7">
@@ -154,7 +155,7 @@ export default function Home() {
                 <div className="single_feature feature_card_gradient home-feature-card">
                   <div className="single_feature_part">
                     <div className="iconContainer">
-                      <img src={feature.image} alt={feature.title} className="feature_gif" />
+                      <img src={getAssetUrl(feature.image)} alt={feature.title} className="feature_gif" />
                     </div>
                     <h3>{feature.title}</h3>
                     <p>{feature.text}</p>
@@ -171,7 +172,7 @@ export default function Home() {
                 <div className="row align-items-center">
                   <div className="col-lg-6">
                     <div className="premium_learning_img">
-                      <img src="/img/learning_img.gif" alt="learning" />
+                      <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
                     </div>
                   </div>
                   <div className="col-lg-6">
@@ -203,7 +204,7 @@ export default function Home() {
             {courses.map((course) => (
               <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.title}>
                 <div className="single_special_cource home-course-card">
-                  <img src={course.image} className="special_img" alt={course.title} />
+                  <img src={getAssetUrl(course.image)} className="special_img" alt={course.title} />
                   <div className="special_cource_text">
                     <Link to="/courses" className="btn_4">{course.tag}</Link>
                     <h3>{course.title}</h3>
@@ -232,7 +233,7 @@ export default function Home() {
             {activities.map((activity) => (
               <div className="col-12 col-md-6 col-lg-4" key={activity.title}>
                 <div className="activity_card home-activity-card">
-                  <img src={activity.image} className="activity_thumb" alt={activity.title} />
+                  <img src={getAssetUrl(activity.image)} className="activity_thumb" alt={activity.title} />
                   <div className="activity_content_wrapper">
                     <h4>{activity.title}</h4>
                     <p>{activity.text}</p>

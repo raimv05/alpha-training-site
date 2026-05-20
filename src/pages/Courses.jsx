@@ -1,4 +1,5 @@
 import React from "react";
+import { getAssetUrl } from "../utils/assets.js";
 const courses = [
   {
     id: "ai",
@@ -97,7 +98,7 @@ export default function Courses() {
                   </ul>
                 </div>
                 <div className="course_img_wrap">
-                  <img src={course.img} alt={course.title} className="course_main_img" />
+                  <img src={getAssetUrl(course.img)} alt={course.title} className="course_main_img" />
                 </div>
               </div>
               <div className="course_right_column">

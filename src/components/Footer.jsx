@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getAssetUrl } from "../utils/assets.js";
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
         <div className="row">
           <div className="col-sm-6 col-lg-3">
             <div className="footer_block">
-              <img src="/img/logo.png" className="footer_logo" alt="Logo" />
+              <img src={getAssetUrl("/img/logo.png")} className="footer_logo" alt="Logo" />
               <p className="footer_about">
                 Empowering students with industry-level training and real-world experience to build a successful tech career.
               </p>
@@ -108,13 +109,13 @@ export default function Footer() {
         </div>
         <div className="footer_bottom_icons">
           <a href="https://www.linkedin.com/in/alpha-it-6a8a73364" target="_blank" rel="noopener noreferrer">
-            <img src="/icons/linkedin.png" alt="LinkedIn" />
+            <img src={getAssetUrl("/icons/linkedin.png")} alt="LinkedIn" />
           </a>
           <a href="https://www.youtube.com/@AlphaIT-India" target="_blank" rel="noopener noreferrer">
-            <img src="/icons/youtube.png" alt="YouTube" />
+            <img src={getAssetUrl("/icons/youtube.png")} alt="YouTube" />
           </a>
           <a href="https://facebook.com/AlphaITCompany" target="_blank" rel="noopener noreferrer">
-            <img src="/icons/facebook.png" alt="Facebook" />
+            <img src={getAssetUrl("/icons/facebook.png")} alt="Facebook" />
           </a>
         </div>
         <hr className="footer_divider" />
