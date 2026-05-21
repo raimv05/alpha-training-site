@@ -8,6 +8,7 @@ const navItems = [
   { path: "/about", label: "About" },
   { path: "/courses", label: "Courses" },
   { path: "/activities", label: "Activities" },
+  { path: "/partners", label: "Partners" },
 ];
 
 export default function Header() {

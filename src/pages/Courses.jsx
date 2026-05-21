@@ -1,5 +1,7 @@
 import React from "react";
 import { getAssetUrl } from "../utils/assets.js";
+import LottiePlayer from "../components/LottiePlayer.jsx";
+
 const courses = [
   {
     id: "ai",
@@ -97,8 +99,40 @@ export default function Courses() {
                     {course.teachingMethod.map((item) => <li key={item}>{item}</li>)}
                   </ul>
                 </div>
-                <div className="course_img_wrap">
-                  <img src={getAssetUrl(course.img)} alt={course.title} className="course_main_img" />
+                <div className={`course_img_wrap ${(course.id === "ai" || course.id === "ds" || course.id === "da" || course.id === "fsd" || course.id === "blockchain" || course.id === "cyber") ? "lottie_card_wrap" : ""}`}>
+                  {course.id === "ai" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/ai-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : course.id === "ds" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/ds-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : course.id === "da" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/dashboard-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : course.id === "fsd" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/fs-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : course.id === "blockchain" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/blockchain-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : course.id === "cyber" ? (
+                    <LottiePlayer
+                      src={getAssetUrl("/cyber-lottie.json")}
+                      style={{ width: "100%", height: "280px", margin: "0 auto" }}
+                    />
+                  ) : (
+                    <img src={getAssetUrl(course.img)} alt={course.title} className="course_main_img" />
+                  )}
                 </div>
               </div>
               <div className="course_right_column">

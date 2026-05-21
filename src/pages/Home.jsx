@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Testimonials2 from "../components/Testimonials_2";
 import { getAssetUrl } from "../utils/assets.js";
+import LottiePlayer from "../components/LottiePlayer.jsx";
 
 const features = [
   {
@@ -204,7 +205,51 @@ export default function Home() {
             {courses.map((course) => (
               <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.title}>
                 <div className="single_special_cource home-course-card">
-                  <img src={getAssetUrl(course.image)} className="special_img" alt={course.title} />
+                  {course.title === "AI & Machine Learning" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/ai-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : course.title === "Data Science" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/ds-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : course.title === "Data Analytics" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/dashboard-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : course.title === "MERN Full Stack Development" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/fs-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : course.title === "Blockchain & Web3 Development" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/blockchain-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : course.title === "Cybersecurity & Ethical Hacking" ? (
+                    <div className="special_img lottie_home_card_wrap">
+                      <LottiePlayer
+                        src={getAssetUrl("/cyber-lottie.json")}
+                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                      />
+                    </div>
+                  ) : (
+                    <img src={getAssetUrl(course.image)} className="special_img" alt={course.title} />
+                  )}
                   <div className="special_cource_text">
                     <Link to="/courses" className="btn_4">{course.tag}</Link>
                     <h3>{course.title}</h3>

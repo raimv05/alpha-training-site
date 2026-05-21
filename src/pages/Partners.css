@@ -1,0 +1,556 @@
+/* ── Partners & Tie-ups Custom Styling ── */
+
+:root {
+  --glass-bg-light: rgba(255, 255, 255, 0.45);
+  --glass-bg-dark: rgba(17, 21, 32, 0.55);
+  --glass-border-light: rgba(255, 255, 255, 0.25);
+  --glass-border-dark: rgba(255, 255, 255, 0.06);
+  --shadow-light: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --glow-color: rgba(58, 119, 255, 0.15);
+  --text-primary-light: #1e293b;
+  --text-primary-dark: #f8fafc;
+  --text-secondary-light: #64748b;
+  --text-secondary-dark: #94a3b8;
+}
+
+/* ── Hero/Breadcrumb ── */
+.partners_hero {
+  background: radial-gradient(circle at 10% 8%, rgba(58, 119, 255, 0.12), transparent 30%),
+              linear-gradient(135deg, #f7faff 0%, #edf4ff 100%);
+  padding: 120px 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+html.dark-mode .partners_hero {
+  background: radial-gradient(circle at 10% 8%, rgba(58, 119, 255, 0.05), transparent 30%),
+              linear-gradient(135deg, #0c0f17 0%, #111520 100%) !important;
+}
+
+.partners_hero_content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary-light);
+  margin-bottom: 12px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+html.dark-mode .partners_hero_content h2 {
+  color: var(--text-primary-dark);
+}
+
+.partners_hero_content p {
+  color: var(--text-secondary-light);
+  font-size: 1.1rem;
+  animation: fadeInUp 0.8s ease 0.2s forwards;
+  opacity: 0;
+}
+
+html.dark-mode .partners_hero_content p {
+  color: var(--text-secondary-dark);
+}
+
+/* ── Nav Tabs ── */
+.partners_nav_container {
+  display: flex;
+  justify-content: center;
+  margin: -30px auto 50px;
+  position: relative;
+  z-index: 10;
+  max-width: 600px;
+  padding: 0 15px;
+}
+
+.partners_tabs {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 50px;
+  padding: 6px;
+  display: flex;
+  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+html.dark-mode .partners_tabs {
+  background: rgba(20, 24, 38, 0.85);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.partners_tab_btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary-light);
+  font-weight: 600;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+html.dark-mode .partners_tab_btn {
+  color: var(--text-secondary-dark);
+}
+
+.partners_tab_btn:hover {
+  color: #3a77ff;
+}
+
+html.dark-mode .partners_tab_btn:hover {
+  color: #589df0;
+}
+
+.partners_tab_btn.active {
+  background: #3a77ff;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(58, 119, 255, 0.35);
+}
+
+html.dark-mode .partners_tab_btn.active {
+  background: linear-gradient(135deg, #3a77ff, #589df0);
+  box-shadow: 0 4px 15px rgba(58, 119, 255, 0.25);
+}
+
+/* ── Layout Grid for Corporate section ── */
+.partners_layout_grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 991px) {
+  .partners_layout_grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* ── Glassmorphism Left Panel ── */
+.partners_left_panel {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+html.dark-mode .partners_left_panel {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.partners_left_panel:hover {
+  border-color: rgba(58, 119, 255, 0.3);
+}
+
+.panel_heading_group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel_heading_group h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary-light);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+html.dark-mode .panel_heading_group h3 {
+  color: var(--text-primary-dark);
+}
+
+.panel_icon_blue {
+  color: #3a77ff;
+}
+
+/* Badges list */
+.industries_badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.industry_badge {
+  background: rgba(58, 119, 255, 0.08);
+  border: 1px solid rgba(58, 119, 255, 0.15);
+  color: #3a77ff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+html.dark-mode .industry_badge {
+  background: rgba(58, 119, 255, 0.12);
+  border-color: rgba(58, 119, 255, 0.25);
+  color: #589df0;
+}
+
+.industry_badge:hover {
+  transform: translateY(-2px);
+  background: #3a77ff;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(58, 119, 255, 0.25);
+}
+
+/* Value list */
+.value_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.value_list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--text-secondary-light);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+html.dark-mode .value_list li {
+  color: var(--text-secondary-dark);
+}
+
+.value_check_wrapper {
+  background: rgba(58, 119, 255, 0.1);
+  color: #3a77ff;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+html.dark-mode .value_check_wrapper {
+  background: rgba(58, 119, 255, 0.15);
+  color: #589df0;
+}
+
+/* ── Right Logo Grid ── */
+.partners_logo_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+@media (max-width: 575px) {
+  .partners_logo_grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+.logo_card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+html.dark-mode .logo_card {
+  background: rgba(255, 255, 255, 0.95); /* Keep logos crisp and high contrast */
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.logo_card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 30px rgba(58, 119, 255, 0.18);
+  border-color: rgba(58, 119, 255, 0.25);
+}
+
+html.dark-mode .logo_card:hover {
+  box-shadow: 0 15px 30px rgba(58, 119, 255, 0.3);
+}
+
+/* ── Quote Banner ── */
+.partners_quote_banner {
+  background: #f1f6ff;
+  border-left: 4px solid #3a77ff;
+  border-radius: 0 20px 20px 0;
+  padding: 30px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(58, 119, 255, 0.03);
+  margin-top: 40px;
+  animation: fadeInUp 0.8s ease 0.3s forwards;
+  opacity: 0;
+}
+
+html.dark-mode .partners_quote_banner {
+  background: rgba(58, 119, 255, 0.07);
+  border-left-color: #589df0;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+.quote_icon {
+  font-size: 2.2rem;
+  color: #3a77ff;
+  font-style: italic;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+html.dark-mode .quote_icon {
+  color: #589df0;
+}
+
+.quote_text_group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quote_text_group p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--text-primary-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+html.dark-mode .quote_text_group p {
+  color: var(--text-primary-dark);
+}
+
+.quote_author {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3a77ff;
+}
+
+html.dark-mode .quote_author {
+  color: #589df0;
+}
+
+/* ── College Tie-ups Section ── */
+.colleges_section {
+  padding: 40px 0 80px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.college_grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 991px) {
+  .college_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .college_grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.college_card {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-light);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: var(--shadow-light);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+html.dark-mode .college_card {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: var(--shadow-dark);
+}
+
+.college_card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(58, 119, 255, 0.3);
+  box-shadow: 0 12px 24px var(--glow-color);
+}
+
+html.dark-mode .college_card:hover {
+  box-shadow: 0 12px 24px rgba(58, 119, 255, 0.1);
+}
+
+.college_header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.college_logo_wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+}
+
+html.dark-mode .college_logo_wrapper {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.college_title_group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.college_title_group h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary-light);
+  margin: 0;
+}
+
+html.dark-mode .college_title_group h4 {
+  color: var(--text-primary-dark);
+}
+
+.college_location {
+  font-size: 0.85rem;
+  color: var(--text-secondary-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+html.dark-mode .college_location {
+  color: var(--text-secondary-dark);
+}
+
+.college_divider {
+  border: 0;
+  height: 1px;
+  background: rgba(58, 119, 255, 0.15);
+  margin: 0;
+}
+
+.college_body_info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.info_label {
+  color: var(--text-secondary-light);
+}
+
+html.dark-mode .info_label {
+  color: var(--text-secondary-dark);
+}
+
+.info_value {
+  font-weight: 600;
+  color: var(--text-primary-light);
+}
+
+html.dark-mode .info_value {
+  color: var(--text-primary-dark);
+}
+
+.badge_partnership {
+  background: rgba(33, 199, 197, 0.08);
+  border: 1px solid rgba(33, 199, 197, 0.15);
+  color: #21c7c5;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+html.dark-mode .badge_partnership {
+  background: rgba(33, 199, 197, 0.12);
+  border-color: rgba(33, 199, 197, 0.25);
+}
+
+/* ── Keyframe Animations ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

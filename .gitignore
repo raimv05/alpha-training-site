@@ -29,3 +29,12 @@ dist-ssr/
 
 # Firebase cache
 .firebase/
+
+# Root JSON files and packages
+/*.json
+!package.json
+!package-lock.json
+!firebase.json
+
+# Archives
+*.zip

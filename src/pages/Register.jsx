@@ -7,6 +7,7 @@ const initialForm = {
   phone: "",
   specialization: "",
   email: "",
+  heardFrom: "",
 };
 
 export default function Register() {
@@ -20,8 +21,8 @@ export default function Register() {
   };
 
   const validate = () => {
-    const { name, collegeName, courseName, phone, specialization, email } = form;
-    if (!name || !collegeName || !courseName || !phone || !specialization || !email) return "All fields are required.";
+    const { name, collegeName, courseName, phone, specialization, email, heardFrom } = form;
+    if (!name || !collegeName || !courseName || !phone || !specialization || !email || !heardFrom) return "All fields are required.";
     if (!/^[6-9]\d{9}$/.test(phone)) return "Enter a valid 10-digit phone number.";
     if (!email.includes("@") || !email.includes(".")) return "Enter a valid email address.";
     return null;
@@ -61,6 +62,7 @@ export default function Register() {
             ["ti-mobile", "text", "phone", "Phone Number"],
             ["ti-target", "text", "specialization", "Specialization Interested"],
             ["ti-email", "email", "email", "Email"],
+            ["ti-announcement", "text", "heardFrom", "How did you hear about Alpha IT?"],
           ].map(([icon, type, name, placeholder]) => (
             <div className="input-group" key={name}>
               <i className={icon} />

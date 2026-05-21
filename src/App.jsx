@@ -10,6 +10,7 @@ import CourseDetails from "./pages/CourseDetails.jsx";
 import Register from "./pages/Register.jsx";
 import Activities from "./pages/Activities.jsx";
 import Login from "./pages/Login.jsx";
+import Partners from "./pages/Partners.jsx";
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/partners" element={<Partners />} />
         </Routes>
         <Footer />
       </BrowserRouter>
