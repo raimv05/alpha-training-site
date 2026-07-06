@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Testimonials2 from "../components/Testimonials_2";
 import { getAssetUrl } from "../utils/assets.js";
 import LottiePlayer from "../components/LottiePlayer.jsx";
+import { useData } from "../context/DataContext.jsx";
 
 const features = [
   {
@@ -21,78 +22,6 @@ const features = [
   },
 ];
 
-const courses = [
-  {
-    title: "AI & Machine Learning",
-    image: "/img/cource/AI_ML.jfif",
-    desc: "Learn ML algorithms, deep learning, neural networks, and model deployment using real-world datasets.",
-    tag: "AI & Machine Learning",
-  },
-  {
-    title: "Data Science",
-    image: "/img/cource/DS.jpg",
-    desc: "Master statistics, machine learning, EDA, dashboards, and business decision-making through projects.",
-    tag: "Data Science",
-  },
-  {
-    title: "Data Analytics",
-    image: "/img/cource/DA.jfif",
-    desc: "Learn Excel, SQL, Power BI, Tableau, data cleaning, and reporting with industry case studies.",
-    tag: "Data Analytics",
-  },
-  {
-    title: "MERN Full Stack Development",
-    image: "/img/cource/FS.jpg",
-    desc: "Build complete web applications using React, Node.js, Express, MongoDB, APIs, and deployment.",
-    tag: "Full Stack",
-  },
-  {
-    title: "Blockchain & Web3 Development",
-    image: "/img/cource/Blockchain.jpg",
-    desc: "Learn Solidity, Web3.js, smart contracts, DApps, ICP, Aptos, and blockchain project workflows.",
-    tag: "Blockchain",
-  },
-  {
-    title: "Cybersecurity & Ethical Hacking",
-    image: "/img/cource/CB.jpg",
-    desc: "Learn penetration testing, security tools, network hardening, red teaming, and cyber defense.",
-    tag: "Cybersecurity",
-  },
-];
-
-const activities = [
-  {
-    title: "Hands-On Workshop - Full Stack Development",
-    image: "/img/activity/gif8-ezgif.com-gif-maker.gif",
-    text: "Live coding sessions with industry experts covering web development and cloud tools.",
-  },
-  {
-    title: "Hands-On Workshop - AI & Machine Learning",
-    image: "/img/activity/modified-generative-gif.gif",
-    text: "Students build practical models, explore datasets, and learn AI workflows through guided labs.",
-  },
-  {
-    title: "Guest Lecture - Industry Leaders Talk",
-    image: "/img/activity/male-speaker-addresses-media-press-conference-standing-behind-podium-multiple-microphones-scene-represents-359623480-ezgif.com-gif-maker.webp",
-    text: "Professionals from top companies share career roadmaps, project stories, and interview guidance.",
-  },
-  {
-    title: "Hackathons & Coding Challenges",
-    image: "/img/activity/images-ezgif.com-gif-maker.gif",
-    text: "Students compete, collaborate, and build innovative solutions in real-time challenges.",
-  },
-  {
-    title: "Placement & Mock Interviews",
-    image: "/img/activity/Untitled-design-3-ezgif.com-gif-maker.gif",
-    text: "HR sessions, mock technical interviews, and resume-building for job readiness.",
-  },
-  {
-    title: "Team Projects & Presentations",
-    image: "/img/activity/presentation-office-work-ezgif.com-gif-maker.gif",
-    text: "Students showcase their work through team-driven real IT project demos.",
-  },
-];
-
 const stats = [
   ["6+", "Career Tracks"],
   ["45 Days", "Fast-Track Options"],
@@ -101,6 +30,35 @@ const stats = [
 ];
 
 export default function Home() {
+  const { courses, activities } = useData();
+
+  const getCourseTag = (course) => {
+    switch (course.id) {
+      case "ai": return "AI & Machine Learning";
+      case "ds": return "Data Science";
+      case "da": return "Data Analytics";
+      case "fsd": return "Full Stack";
+      case "blockchain": return "Blockchain";
+      case "cyber": return "Cybersecurity";
+      default: return "IT Course";
+    }
+  };
+
+  const getLottieSrc = (id) => {
+    switch (id) {
+      case "ai": return "/ai-lottie.json";
+      case "ds": return "/ds-lottie.json";
+      case "da": return "/dashboard-lottie.json";
+      case "fsd": return "/fs-lottie.json";
+      case "blockchain": return "/blockchain-lottie.json";
+      case "cyber": return "/cyber-lottie.json";
+      default: return null;
+    }
+  };
+
+  // Select first 6 activities for homepage preview
+  const homepageActivities = activities.slice(0, 6);
+
   return (
     <>
       <section className="banner_part reconstructed_hero home-hero">
@@ -169,30 +127,28 @@ export default function Home() {
       </section>
       
       <section className="premium_learning_section">
-              <div className="container">
-                <div className="row align-items-center">
-                  <div className="col-lg-6">
-                    <div className="premium_learning_img">
-                      <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="premium_learning_text">
-                      <h5>ABOUT US</h5>
-                      <h2>Learning with Love <br />and Innovation</h2>
-                      <p>We are dedicated to providing an innovative learning environment where students grow through practical exposure, real-world challenges, and mentor-driven development.</p>
-                      <ul>
-                        <li><span className="ti-pencil-alt" />Hands-on projects from Day 1 with industry guidance.</li>
-                        <li><span className="ti-ruler-pencil" />Personal mentorship & skill-building modules.</li>
-                      </ul>
-                      <Link to="/about" className="btn_1">Know More</Link>
-                    </div>
-                  </div>
-                </div>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6">
+              <div className="premium_learning_img">
+                <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
               </div>
-            </section>
-
-      
+            </div>
+            <div className="col-lg-6">
+              <div className="premium_learning_text">
+                <h5>ABOUT US</h5>
+                <h2>Learning with Love <br />and Innovation</h2>
+                <p>We are dedicated to providing an innovative learning environment where students grow through practical exposure, real-world challenges, and mentor-driven development.</p>
+                <ul>
+                  <li><span className="ti-pencil-alt" />Hands-on projects from Day 1 with industry guidance.</li>
+                  <li><span className="ti-ruler-pencil" />Personal mentorship & skill-building modules.</li>
+                </ul>
+                <Link to="/about" className="btn_1">Know More</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="special_cource home-courses-section">
         <div className="container">
@@ -202,62 +158,41 @@ export default function Home() {
             <p>Choose a focused track and build a portfolio through guided projects, labs, and capstones.</p>
           </div>
           <div className="row">
-            {courses.map((course) => (
-              <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.title}>
-                <div className="single_special_cource home-course-card">
-                  {course.title === "AI & Machine Learning" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/ai-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
+            {courses.map((course) => {
+              const lottieSrc = getLottieSrc(course.id);
+              return (
+                <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.id}>
+                  <div className="single_special_cource home-course-card">
+                    {lottieSrc ? (
+                      <div className="special_img lottie_home_card_wrap">
+                        <LottiePlayer
+                          src={getAssetUrl(lottieSrc)}
+                          style={{ width: "100%", height: "200px", margin: "0 auto" }}
+                        />
+                      </div>
+                    ) : (
+                      <img
+                        src={course.img.startsWith("data:") ? course.img : getAssetUrl(course.img)}
+                        className="special_img"
+                        alt={course.title}
+                        onError={(e) => {
+                          e.target.src = "/img/cource/AI_ML.jfif";
+                        }}
                       />
+                    )}
+                    <div className="special_cource_text">
+                      <Link to={`/course-details?id=${course.id}`} className="btn_4">{getCourseTag(course)}</Link>
+                      <h3>
+                        <Link to={`/course-details?id=${course.id}`} style={{ color: "inherit", textDecoration: "none" }}>
+                          {course.title}
+                        </Link>
+                      </h3>
+                      <p>{course.shortDesc}</p>
                     </div>
-                  ) : course.title === "Data Science" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/ds-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
-                      />
-                    </div>
-                  ) : course.title === "Data Analytics" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/dashboard-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
-                      />
-                    </div>
-                  ) : course.title === "MERN Full Stack Development" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/fs-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
-                      />
-                    </div>
-                  ) : course.title === "Blockchain & Web3 Development" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/blockchain-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
-                      />
-                    </div>
-                  ) : course.title === "Cybersecurity & Ethical Hacking" ? (
-                    <div className="special_img lottie_home_card_wrap">
-                      <LottiePlayer
-                        src={getAssetUrl("/cyber-lottie.json")}
-                        style={{ width: "100%", height: "200px", margin: "0 auto" }}
-                      />
-                    </div>
-                  ) : (
-                    <img src={getAssetUrl(course.image)} className="special_img" alt={course.title} />
-                  )}
-                  <div className="special_cource_text">
-                    <Link to="/courses" className="btn_4">{course.tag}</Link>
-                    <h3>{course.title}</h3>
-                    <p>{course.desc}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
           <div className="home-section-action text-center">
             <Link to="/courses" className="home-primary-btn">View All Courses</Link>
@@ -275,13 +210,32 @@ export default function Home() {
             <p>Workshops, visits, guest lectures, challenges, and presentations give students real exposure.</p>
           </div>
           <div className="row g-4 justify-content-center">
-            {activities.map((activity) => (
-              <div className="col-12 col-md-6 col-lg-4" key={activity.title}>
+            {homepageActivities.map((activity) => (
+              <div className="col-12 col-md-6 col-lg-4" key={activity.id}>
                 <div className="activity_card home-activity-card">
-                  <img src={getAssetUrl(activity.image)} className="activity_thumb" alt={activity.title} />
+                  {activity.type === "video" ? (
+                    <video
+                      controls
+                      muted
+                      className="activity_thumb"
+                      src={activity.path.startsWith("data:") ? activity.path : getAssetUrl(activity.path)}
+                      style={{ objectFit: "cover", height: "220px" }}
+                    />
+                  ) : (
+                    <img
+                      src={activity.path.startsWith("data:") ? activity.path : getAssetUrl(activity.path)}
+                      className="activity_thumb"
+                      alt={activity.title || "Student Activity"}
+                      onError={(e) => {
+                        e.target.src = "/img/activity/visits/3.webp";
+                      }}
+                    />
+                  )}
                   <div className="activity_content_wrapper">
-                    <h4>{activity.title}</h4>
-                    <p>{activity.text}</p>
+                    <h4>{activity.title || "Student Activity"}</h4>
+                    <p style={{ textTransform: "uppercase", fontSize: "12px", fontWeight: "bold", color: "#3a77ff" }}>
+                      {activity.category}
+                    </p>
                   </div>
                 </div>
               </div>

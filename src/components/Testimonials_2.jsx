@@ -2,99 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
 import "./Testimonials_2.css";
 import { getAssetUrl } from "../utils/assets.js";
+import { useData } from "../context/DataContext.jsx";
 
-const testimonialData = [
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Shivam Garg",
-    clientTitle: "QA Engineer",
-    clientLocation: "Chandigarh, India",
-    clientAvatar: "/img/testimonials/1.jpeg",
-    testimonialText:
-      "My training at Alpha IT Company has been a turning point. I learned how to think logically, identify issues, and test software with real industry-level tools. I now feel fully prepared to work in the QA domain.",
-    rating: 5,
-    category: "QA",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Abhishek Yadav",
-    clientTitle: "QA Engineer",
-    clientLocation: "Mohali, India",
-    clientAvatar: "/img/testimonials/2.jpeg",
-    testimonialText:
-      "Working as a QA Engineering intern was a great learning experience. I gained deep insights into manual and automation testing, writing test cases, and understanding real-world bug reporting.",
-    rating: 5,
-    category: "QA",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Varinda Garg",
-    clientTitle: "Backend Developer",
-    clientLocation: "Chandigarh, India",
-    clientAvatar: "/img/testimonials/3.jpeg",
-    testimonialText:
-      "My backend development internship helped me transform theoretical knowledge into practical skills. I got experience working with APIs, databases, and server-side logic.",
-    rating: 5,
-    category: "Backend",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Harmanpreet Kaur",
-    clientTitle: "Backend Developer",
-    clientLocation: "Patiala, India",
-    clientAvatar: "/img/testimonials/4.jpeg",
-    testimonialText:
-      "I learned how scalable backend systems are built and how to write clean, structured code. The hands-on projects gave me real exposure to industry practices.",
-    rating: 5,
-    category: "Backend",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Amritpal Singh",
-    clientTitle: "Backend Developer",
-    clientLocation: "Ludhiana, India",
-    clientAvatar: "/img/testimonials/5.jpeg",
-    testimonialText:
-      "From database handling to API creation, every module was explained clearly. The practical approach and constant support from mentors made this internship incredible.",
-    rating: 5,
-    category: "Backend",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Nitin Rana",
-    clientTitle: "Backend Developer",
-    clientLocation: "Mohali, India",
-    clientAvatar: "/img/testimonials/6.jpeg",
-    testimonialText:
-      "I learned modern backend concepts, debugging techniques, version control, and best practices for writing efficient code. The training was friendly and professional.",
-    rating: 4,
-    category: "Backend",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Agrim Pradhan Saxena",
-    clientTitle: "Technical Trainer",
-    clientLocation: "Chandigarh, India",
-    clientAvatar: "/img/testimonials/7.jpeg",
-    testimonialText:
-      "Training interns at Alpha IT Company has been rewarding. The environment encourages innovation and growth, and watching students develop real industry skills has been truly fulfilling.",
-    rating: 5,
-    category: "Trainer",
-  },
-  {
-    companyLogo: "/img/logo-cropped.png",
-    clientName: "Ansh Kapoor",
-    clientTitle: "Technical Trainer",
-    clientLocation: "Chandigarh, India",
-    clientAvatar: "/img/testimonials/8.jpeg",
-    testimonialText:
-      "Guiding interns through practical, real-world learning and seeing their progress has been the highlight of my work at Alpha IT Company.",
-    rating: 5,
-    category: "Trainer",
-  },
-];
-
-const categories = ["All", "QA", "Backend", "Trainer"];
 
 function StarRating({ rating }) {
   return (
@@ -164,6 +73,7 @@ function TestimonialCard({ data }) {
 }
 
 export default function Testimonials2() {
+  const { testimonials } = useData();
   const [activeFilter, setActiveFilter] = useState("All");
   const { darkMode } = useDarkMode();
   const [searchQuery, setSearchQuery] = useState("");
@@ -173,6 +83,9 @@ export default function Testimonials2() {
   const touchStartX = useRef(0);
   const scrollLeftStart = useRef(0);
   const isDragging = useRef(false);
+
+  // Derive categories list dynamically
+  const categories = ["All", ...new Set(testimonials.map((t) => t.category))];
 
   /* ── Fade-in entrance when section scrolls into view ── */
   useEffect(() => {
@@ -237,7 +150,7 @@ export default function Testimonials2() {
     }
   };
 
-  const filteredData = testimonialData.filter((item) => {
+  const filteredData = testimonials.filter((item) => {
     const matchesCategory =
       activeFilter === "All" || item.category === activeFilter;
     const matchesSearch =
