@@ -2,24 +2,7 @@ import { Link } from "react-router-dom";
 import Testimonials2 from "../components/Testimonials_2";
 import { getAssetUrl } from "../utils/assets.js";
 import LottiePlayer from "../components/LottiePlayer.jsx";
-
-const features = [
-  {
-    title: "Build a Better Future",
-    image: "/icons/future.gif",
-    text: "Learn job-ready skills with practical tools, guided projects, and career-focused mentorship.",
-  },
-  {
-    title: "Qualified Industry Trainers",
-    image: "/icons/training.gif",
-    text: "Train under certified IT professionals with hands-on experience across modern technology stacks.",
-  },
-  {
-    title: "High-Value Job Opportunities",
-    image: "/icons/job.gif",
-    text: "Get internship support, placement guidance, and industry exposure that accelerates your career.",
-  },
-];
+import { useEffect, useState } from "react";
 
 const courses = [
   {
@@ -101,22 +84,41 @@ const stats = [
 ];
 
 export default function Home() {
+
+  const [hero, setHero] = useState(null);
+
+  useEffect(() => {
+      const fetchHome = async () => {
+          try {
+              const response = await fetch(
+                  "https://alphaitms.com/wp-json/training/v1/home"
+              );
+              const data = await response.json();
+              setHero(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+  
+      fetchHome();
+  }, []);
+
+  console.log(hero, 'heroooooo');
+
   return (
     <>
       <section className="banner_part reconstructed_hero home-hero">
         <div className="hero-bg-tint" />
-        <img className="hero-illustration" src={getAssetUrl("/img/banner_img.png")} alt="" aria-hidden="true" />
+        <img className="hero-illustration" src={hero?.hero_image} alt="" aria-hidden="true" />
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-7 col-xl-7">
               <div className="banner_text">
                 <div className="banner_text_iner">
                   <h5 className="hero-eyebrow-fixed">India's Fastest Growing Industrial Training Institute</h5>
-                  <h1>Empowering Students With Job-Ready IT Skills for a Future-Proof Career</h1>
+                  <h1>{hero?.hero_title}</h1>
                   <p>
-                    Join industry experts and learn in-demand technologies such as AI/ML, Data Science,
-                    Full-Stack Development, Cybersecurity, and Blockchain through hands-on projects,
-                    real case studies, and mentor-led training.
+                    {hero?.hero_description}
                   </p>
                   <div className="home-hero-actions">
                     <Link to="/courses" className="home-primary-btn">Explore Courses</Link>
@@ -143,23 +145,22 @@ export default function Home() {
             <div className="col-12 col-md-6 col-lg-3 mb-4">
               <div className="single_feature_text feature_card_equal home-intro-card">
                 <span className="home-kicker">Why Choose Us</span>
-                <h2>Training Built Around Real Work</h2>
+                <h2>{hero?.why_choose_us_heading}</h2>
                 <p>
-                  Our programs turn academic learning into practical confidence with guided projects,
-                  tools used by companies, and continuous mentor support.
+                  {hero?.why_choose_us_description}
                 </p>
-                <Link to="/about" className="btn_1">Explore Insights</Link>
+                <Link to="/about" className="btn_1">{hero?.why_choose_us_button_text}</Link>
               </div>
             </div>
-            {features.map((feature) => (
-              <div className="col-12 col-md-6 col-lg-3 mb-4" key={feature.title}>
+            {hero?.why_choose_us_features.map((feature) => (
+              <div className="col-12 col-md-6 col-lg-3 mb-4" key={feature.heading}>
                 <div className="single_feature feature_card_gradient home-feature-card">
                   <div className="single_feature_part">
                     <div className="iconContainer">
-                      <img src={getAssetUrl(feature.image)} alt={feature.title} className="feature_gif" />
+                      <img src={feature.icon} alt={feature.heading} className="feature_gif" />
                     </div>
-                    <h3>{feature.title}</h3>
-                    <p>{feature.text}</p>
+                    <h3>{feature.heading}</h3>
+                    <p>{feature.description}</p>
                   </div>
                 </div>
               </div>
@@ -169,28 +170,29 @@ export default function Home() {
       </section>
       
       <section className="premium_learning_section">
-              <div className="container">
-                <div className="row align-items-center">
-                  <div className="col-lg-6">
-                    <div className="premium_learning_img">
-                      <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <div className="premium_learning_text">
-                      <h5>ABOUT US</h5>
-                      <h2>Learning with Love <br />and Innovation</h2>
-                      <p>We are dedicated to providing an innovative learning environment where students grow through practical exposure, real-world challenges, and mentor-driven development.</p>
-                      <ul>
-                        <li><span className="ti-pencil-alt" />Hands-on projects from Day 1 with industry guidance.</li>
-                        <li><span className="ti-ruler-pencil" />Personal mentorship & skill-building modules.</li>
-                      </ul>
-                      <Link to="/about" className="btn_1">Know More</Link>
-                    </div>
-                  </div>
-                </div>
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-lg-6">
+              <div className="premium_learning_img">
+                <img src={hero?.about_us_image} alt="learning" />
               </div>
-            </section>
+            </div>
+            <div className="col-lg-6">
+              <div className="premium_learning_text">
+                <h5>ABOUT US</h5>
+                <h2>{hero?.about_us_title}</h2>
+                <p>{hero?.about_us_text}</p>
+                <ul>
+                {hero?.about_us_feature.map((feature) => (
+                  <li key={feature.icon_class}><span className={feature.icon_class} />{feature.text}</li>
+                ))}
+                </ul>
+                <Link to="/about" className="btn_1">{hero?.about_us_button_text}</Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       
 
