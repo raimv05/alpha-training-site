@@ -174,6 +174,7 @@ export default function Partners() {
   ];
 
   const scaleHeadingParts = partners?.scale_heading?.split("&").map((part) => part.trim());
+  const quoteText = partners?.qoutes_label?.replace(/^["']+|["']+$/g, "");
 
   return (
     <>
@@ -276,7 +277,7 @@ export default function Partners() {
           <div className="partners_quote_banner">
             <span className="quote_icon">"</span>
             <div className="quote_text_group">
-              <p>{partners?.qoutes_label}</p>
+              <p>{quoteText}</p>
               <span className="quote_author">— {partners?.qoutes_value}</span>
             </div>
           </div>
