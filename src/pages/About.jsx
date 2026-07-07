@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Testimonials_2 from "../components/Testimonials_2";
-import { getAssetUrl } from "../utils/assets.js";
 
 export default function About() {
+  const [about, setAbout] = useState(null);
+
+  useEffect(() => {
+      const fetchAbout = async () => {
+          try {
+              const response = await fetch(
+                  "https://alphaitms.com/wp-json/training/v1/home"
+              );
+              const data = await response.json();
+              setAbout(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+  
+      fetchAbout();
+  }, []);
   return (
     <>
       <section className="premium_breadcrumb">
@@ -21,37 +37,21 @@ export default function About() {
             <div className="col-lg-3">
               <div className="premium_feature_text">
                 <h2>Why <br /> Choose Us?</h2>
-                <p>We empower students with industry-ready training, real-world projects, and hands-on mentorship from top-tier professionals.</p>
-                <Link to="/courses" className="btn_1">Explore Courses</Link>
+                <p>{about?.why_choose_us_description}</p>
+                <Link to="/courses" className="btn_1">{about?.why_choose_us_button_text}</Link>
               </div>
             </div>
-            <div className="col-lg-3">
-              <div className="premium_feature_card">
-                <div className="pf_icon">
-                  <img src={getAssetUrl("/icons/future.gif")} alt="icon" />
+            {about?.why_choose_us_features.map((feature) => (
+              <div className="col-lg-3" key={feature.heading}>
+                <div className="premium_feature_card">
+                  <div className="pf_icon">
+                    <img src={feature.icon} alt="icon" />
+                  </div>
+                    <h4>{feature.heading}</h4>
+                    <p>{feature.description}</p>
                 </div>
-                <h4>Better Future</h4>
-                <p>Learn with top instructors, industry projects & skill-based modules designed to prepare you for real jobs.</p>
               </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="premium_feature_card">
-                <div className="pf_icon">
-                  <img src={getAssetUrl("/icons/training.gif")} alt="icon" />
-                </div>
-                <h4>Qualified Trainers</h4>
-                <p>Learn from experienced trainers working in top companies with deep domain knowledge & mentoring skills.</p>
-              </div>
-            </div>
-            <div className="col-lg-3">
-              <div className="premium_feature_card">
-                <div className="pf_icon">
-                  <img src={getAssetUrl("/icons/job.gif")} alt="icon" />
-                </div>
-                <h4>Job Opportunities</h4>
-                <p>We ensure placement assistance, industry networking, project-based upskilling & internship support.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -61,19 +61,20 @@ export default function About() {
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className="premium_learning_img">
-                <img src={getAssetUrl("/img/learning_img.gif")} alt="learning" />
+                <img src={about?.about_us_image} alt="learning" />
               </div>
             </div>
             <div className="col-lg-6">
               <div className="premium_learning_text">
                 <h5>ABOUT US</h5>
-                <h2>Learning with Love <br />and Innovation</h2>
-                <p>We are dedicated to providing an innovative learning environment where students grow through practical exposure, real-world challenges, and mentor-driven development.</p>
+                <h2>{about?.about_us_title}</h2>
+                <p>{about?.about_us_text}</p>
                 <ul>
-                  <li><span className="ti-pencil-alt" />Hands-on projects from Day 1 with industry guidance.</li>
-                  <li><span className="ti-ruler-pencil" />Personal mentorship & skill-building modules.</li>
+                  {about?.about_us_feature.map((feature) => (
+                    <li key={feature.icon_class}><span className={feature.icon_class} />{feature.text}</li>
+                  ))}
                 </ul>
-                <Link to="/about" className="btn_1">Know More</Link>
+                <Link to="/courses" className="btn_1">{about?.about_us_button_text}</Link>
               </div>
             </div>
           </div>
