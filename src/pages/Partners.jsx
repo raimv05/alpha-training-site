@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDarkMode } from "../context/DarkModeContext.jsx";
 import "./Partners.css";
 
@@ -94,9 +94,27 @@ const CircularShieldLogo = () => (
   </svg>
 );
 
+
 export default function Partners() {
   const { darkMode } = useDarkMode();
   const [activeTab, setActiveTab] = useState("all");
+  const [partners, setPartners] = useState(null);
+
+  useEffect(() => {
+    const fetchPartners = async () => {
+      try {
+        const response = await fetch(
+          "https://alphaitms.com/wp-json/training/v1/partners"
+        );
+        const data = await response.json();
+        setPartners(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPartners();
+  }, []);
 
   const collegePartners = [
     {
@@ -155,14 +173,16 @@ export default function Partners() {
     }
   ];
 
+  const scaleHeadingParts = partners?.scale_heading?.split("&").map((part) => part.trim());
+
   return (
     <>
       {/* ── Hero Section ── */}
       <section className="partners_hero">
         <div className="container">
           <div className="partners_hero_content">
-            <h2>Partners & Tie-ups</h2>
-            <p>Collaborating with industry leaders and premier academic institutions to bridge the skill gap.</p>
+            <h2>{partners?.heading}</h2>
+            <p>{partners?.title}</p>
           </div>
         </div>
       </section>
@@ -198,9 +218,15 @@ export default function Partners() {
         <section className="corporate_partners_section mb-5 mt-5">
           <div className="row align-items-center mb-4">
             <div className="col-12 text-center text-lg-start">
-              <span className="home-kicker">Enterprise Scale</span>
+              <span className="home-kicker">{partners?.scale_text}</span>
               <h2 className="section-title mt-2">
-                Clients & <span style={{ color: "#3a77ff" }}>Partnerships</span>
+                {scaleHeadingParts?.length >= 2 ? (
+                  <>
+                    {scaleHeadingParts[0]} & <span style={{ color: "#3a77ff" }}>{scaleHeadingParts[1]}</span>
+                  </>
+                ) : (
+                  partners?.scale_heading
+                )}
               </h2>
             </div>
           </div>
@@ -211,67 +237,47 @@ export default function Partners() {
               <div className="panel_heading_group">
                 <h3>
                   <span className="ti-briefcase panel_icon_blue" />
-                  Industries Served
+                  {partners?.industries_heading}
                 </h3>
                 <div className="industries_badges">
-                  <span className="industry_badge">Technology</span>
-                  <span className="industry_badge">Financial Services</span>
-                  <span className="industry_badge">Healthcare</span>
-                  <span className="industry_badge">Retail</span>
-                  <span className="industry_badge">Manufacturing</span>
-                  <span className="industry_badge">Public Sector</span>
+                  {partners?.tags?.map((item) => (
+                    <span className="industry_badge" key={item.tag}>{item.tag}</span>
+                  ))}
                 </div>
               </div>
 
               <div className="panel_heading_group">
                 <h3>
                   <span className="ti-stats-up panel_icon_blue" />
-                  Value Delivered
+                  {partners?.values_heading}
                 </h3>
                 <ul className="value_list">
-                  <li>
-                    <div className="value_check_wrapper">✓</div>
-                    <span>Significant cost optimization across IT portfolios</span>
-                  </li>
-                  <li>
-                    <div className="value_check_wrapper">✓</div>
-                    <span>Accelerated delivery and time-to-market for digital initiatives</span>
-                  </li>
-                  <li>
-                    <div className="value_check_wrapper">✓</div>
-                    <span>Enhanced reliability and operational stability</span>
-                  </li>
-                  <li>
-                    <div className="value_check_wrapper">✓</div>
-                    <span>Comprehensive security posture uplift and compliance</span>
-                  </li>
+                  {partners?.value_description?.map((item) => (
+                    <li key={item.value}>
+                      <div className="value_check_wrapper">✓</div>
+                      <span>{item.value}</span>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
 
             {/* Right Panel: Logo Grid */}
             <div className="partners_logo_grid">
-              <div className="logo_card"><CitiLogo /></div>
-              <div className="logo_card"><GreenGLogo /></div>
-              <div className="logo_card"><CenturionLogo /></div>
-              <div className="logo_card"><FreedomMortgageLogo /></div>
-              <div className="logo_card"><SailLogo /></div>
-              <div className="logo_card"><PentagonLogo /></div>
-              <div className="logo_card"><IngramLogo /></div>
-              <div className="logo_card"><TriangleLogo /></div>
-              <div className="logo_card"><CircularShieldLogo /></div>
+              {partners?.logos?.map((logo) => (
+                <div className="logo_card" key={logo}>
+                  <img src={logo} alt="Partner logo" className="partner_logo_img" />
+                </div>
+              ))}
             </div>
           </div>
 
           {/* Leadership Quote Banner */}
           <div className="partners_quote_banner">
-            <span className="quote_icon">“</span>
+            <span className="quote_icon">"</span>
             <div className="quote_text_group">
-              <p>
-                "Partner with us to transform your business and unlock new opportunities for growth and success.
-                Our commitment ensures a lasting, positive impact."
-              </p>
-              <span className="quote_author">— Alpha Technologies Leadership</span>
+              <p>{partners?.qoutes_label}</p>
+              <span className="quote_author">— {partners?.qoutes_value}</span>
             </div>
           </div>
         </section>
