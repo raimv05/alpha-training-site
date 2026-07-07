@@ -4,78 +4,6 @@ import { getAssetUrl } from "../utils/assets.js";
 import LottiePlayer from "../components/LottiePlayer.jsx";
 import { useEffect, useState } from "react";
 
-const courses = [
-  {
-    title: "AI & Machine Learning",
-    image: "/img/cource/AI_ML.jfif",
-    desc: "Learn ML algorithms, deep learning, neural networks, and model deployment using real-world datasets.",
-    tag: "AI & Machine Learning",
-  },
-  {
-    title: "Data Science",
-    image: "/img/cource/DS.jpg",
-    desc: "Master statistics, machine learning, EDA, dashboards, and business decision-making through projects.",
-    tag: "Data Science",
-  },
-  {
-    title: "Data Analytics",
-    image: "/img/cource/DA.jfif",
-    desc: "Learn Excel, SQL, Power BI, Tableau, data cleaning, and reporting with industry case studies.",
-    tag: "Data Analytics",
-  },
-  {
-    title: "MERN Full Stack Development",
-    image: "/img/cource/FS.jpg",
-    desc: "Build complete web applications using React, Node.js, Express, MongoDB, APIs, and deployment.",
-    tag: "Full Stack",
-  },
-  {
-    title: "Blockchain & Web3 Development",
-    image: "/img/cource/Blockchain.jpg",
-    desc: "Learn Solidity, Web3.js, smart contracts, DApps, ICP, Aptos, and blockchain project workflows.",
-    tag: "Blockchain",
-  },
-  {
-    title: "Cybersecurity & Ethical Hacking",
-    image: "/img/cource/CB.jpg",
-    desc: "Learn penetration testing, security tools, network hardening, red teaming, and cyber defense.",
-    tag: "Cybersecurity",
-  },
-];
-
-const activities = [
-  {
-    title: "Hands-On Workshop - Full Stack Development",
-    image: "/img/activity/gif8-ezgif.com-gif-maker.gif",
-    text: "Live coding sessions with industry experts covering web development and cloud tools.",
-  },
-  {
-    title: "Hands-On Workshop - AI & Machine Learning",
-    image: "/img/activity/modified-generative-gif.gif",
-    text: "Students build practical models, explore datasets, and learn AI workflows through guided labs.",
-  },
-  {
-    title: "Guest Lecture - Industry Leaders Talk",
-    image: "/img/activity/male-speaker-addresses-media-press-conference-standing-behind-podium-multiple-microphones-scene-represents-359623480-ezgif.com-gif-maker.webp",
-    text: "Professionals from top companies share career roadmaps, project stories, and interview guidance.",
-  },
-  {
-    title: "Hackathons & Coding Challenges",
-    image: "/img/activity/images-ezgif.com-gif-maker.gif",
-    text: "Students compete, collaborate, and build innovative solutions in real-time challenges.",
-  },
-  {
-    title: "Placement & Mock Interviews",
-    image: "/img/activity/Untitled-design-3-ezgif.com-gif-maker.gif",
-    text: "HR sessions, mock technical interviews, and resume-building for job readiness.",
-  },
-  {
-    title: "Team Projects & Presentations",
-    image: "/img/activity/presentation-office-work-ezgif.com-gif-maker.gif",
-    text: "Students showcase their work through team-driven real IT project demos.",
-  },
-];
-
 const stats = [
   ["6+", "Career Tracks"],
   ["45 Days", "Fast-Track Options"],
@@ -203,7 +131,7 @@ export default function Home() {
             <h2>Industry-ready programs for practical growth</h2>
             <p>Choose a focused track and build a portfolio through guided projects, labs, and capstones.</p>
           </div>
-          <div className="row">
+          <div className="row mb-2">
             {hero?.all_courses.map((course) => (
               <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.link_text}>
                 <div className="single_special_cource home-course-card">
