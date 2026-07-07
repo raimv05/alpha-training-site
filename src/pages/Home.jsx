@@ -204,8 +204,8 @@ export default function Home() {
             <p>Choose a focused track and build a portfolio through guided projects, labs, and capstones.</p>
           </div>
           <div className="row">
-            {courses.map((course) => (
-              <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.title}>
+            {hero?.all_courses.map((course) => (
+              <div className="col-12 col-md-6 col-lg-4 mb-4" key={course.link_text}>
                 <div className="single_special_cource home-course-card">
                   {course.title === "AI & Machine Learning" ? (
                     <div className="special_img lottie_home_card_wrap">
@@ -250,12 +250,12 @@ export default function Home() {
                       />
                     </div>
                   ) : (
-                    <img src={getAssetUrl(course.image)} className="special_img" alt={course.title} />
+                    <img src={course.image} className="special_img" alt={course.title} />
                   )}
                   <div className="special_cource_text">
-                    <Link to="/courses" className="btn_4">{course.tag}</Link>
+                    <Link to="/courses" className="btn_4">{course.link_text}</Link>
                     <h3>{course.title}</h3>
-                    <p>{course.desc}</p>
+                    <p>{course.description}</p>
                   </div>
                 </div>
               </div>
@@ -273,17 +273,17 @@ export default function Home() {
         <div className="container">
           <div className="home-section-heading text-center">
             <span className="home-kicker">Student Activities</span>
-            <h2>Learning beyond the classroom</h2>
-            <p>Workshops, visits, guest lectures, challenges, and presentations give students real exposure.</p>
+            <h2>{hero?.activities_title}</h2>
+            <p>{hero?.activities_text}</p>
           </div>
           <div className="row g-4 justify-content-center">
-            {activities.map((activity) => (
+            {hero?.activities.map((activity) => (
               <div className="col-12 col-md-6 col-lg-4" key={activity.title}>
                 <div className="activity_card home-activity-card">
-                  <img src={getAssetUrl(activity.image)} className="activity_thumb" alt={activity.title} />
+                  <img src={activity.image} className="activity_thumb" alt={activity.title} />
                   <div className="activity_content_wrapper">
                     <h4>{activity.title}</h4>
-                    <p>{activity.text}</p>
+                    <p>{activity.description}</p>
                   </div>
                 </div>
               </div>
