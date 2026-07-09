@@ -1541,6 +1541,7 @@ html.dark-mode .submit-btn {
   width: 22px !important;
   height: 22px !important;
   object-fit: contain !important;
+  margin: 0 !important;
   filter: brightness(1.4) !important;
   transition: filter 0.25s ease !important;
 }
