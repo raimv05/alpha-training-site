@@ -1,7 +1,25 @@
 import { Link } from "react-router-dom";
 import { getAssetUrl } from "../utils/assets.js";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+  const [footer, setFooter] = useState(null);
+
+  useEffect(() => {
+      const fetchFooter = async () => {
+          try {
+              const response = await fetch(
+                  "https://alphaitms.com/wp-json/training/v1/footer"
+              );
+              const data = await response.json();
+              setFooter(data);
+          } catch (error) {
+              console.error(error);
+          }
+      };
+  
+      fetchFooter();
+  }, []);
   return (
     <footer className="premium_footer">
       <div className="container">
@@ -10,7 +28,7 @@ export default function Footer() {
             <div className="footer_block">
               <img src={getAssetUrl("/img/logo.png")} className="footer_logo" alt="Logo" />
               <p className="footer_about">
-                Empowering students with industry-level training and real-world experience to build a successful tech career.
+                {footer?.description}
               </p>
             </div>
           </div>
@@ -45,7 +63,7 @@ export default function Footer() {
                 <div className="col-12 col-xl-5">
                   <div className="footer_map_wrapper">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.73024844393!2d76.72481197630444!3d30.68241347460981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390febfe87e901c3%3A0xaf2bcb5f0c8e1abf!2sAlpha%20IT%20Managed%20Services%20Private%20Limited!5e0!3m2!1sen!2sin!4v1716187900000!5m2!1sen!2sin"
+                      src={footer?.location}
                       width="100%"
                       height="120"
                       style={{ border: 0, borderRadius: "10px" }}
@@ -73,7 +91,7 @@ export default function Footer() {
                         <circle cx="12" cy="10" r="3"></circle>
                       </svg>
                       <span className="contact_text">
-                        Plot ITC 15, IT Park, Sector 67, Sahibzada Ajit Singh Nagar, Punjab 160062
+                        {footer?.address}
                       </span>
                     </div>
                     <div className="contact_item">
@@ -81,7 +99,7 @@ export default function Footer() {
                         <circle cx="12" cy="12" r="10"></circle>
                         <polyline points="12 6 12 12 16 14"></polyline>
                       </svg>
-                      <span className="contact_text">Open · Closes 5 pm</span>
+                      <span className="contact_text">{footer?.time}</span>
                     </div>
                     <div className="contact_item">
                       <svg className="contact_svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -98,12 +116,13 @@ export default function Footer() {
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                       </svg>
                       <div className="contact_links_col" style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                        <a href="tel:+919056739082" className="contact_text contact_link">
-                          +91 9056739082
-                        </a>
-                        <a href="tel:+919056739088" className="contact_text contact_link">
-                          +91 9056739088
-                        </a>
+                        {
+                          footer?.contact_number?.map((phone) => (
+                            <a href={`tel:${phone.number}`} className="contact_text contact_link" key={phone.number}>
+                              +{phone.number}
+                            </a>
+                          ))
+                        }
                       </div>
                     </div>
                   </div>
@@ -113,19 +132,19 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer_bottom_icons">
-          <a href="https://www.linkedin.com/in/alpha-it-6a8a73364" target="_blank" rel="noopener noreferrer">
+          <a href={footer?.linkedin} target="_blank" rel="noopener noreferrer">
             <img src={getAssetUrl("/icons/linkedin.png")} alt="LinkedIn" />
           </a>
-          <a href="https://www.youtube.com/@AlphaIT-India" target="_blank" rel="noopener noreferrer">
+          <a href={footer?.youtube} target="_blank" rel="noopener noreferrer">
             <img src={getAssetUrl("/icons/youtube.png")} alt="YouTube" />
           </a>
-          <a href="https://facebook.com/AlphaITCompany" target="_blank" rel="noopener noreferrer">
+          <a href={footer?.facebook} target="_blank" rel="noopener noreferrer">
             <img src={getAssetUrl("/icons/facebook.png")} alt="Facebook" />
           </a>
         </div>
         <hr className="footer_divider" />
         <div className="footer_bottom">
-          <p>© {new Date().getFullYear()} Alpha IT. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} {footer?.copyright}</p>
         </div>
       </div>
     </footer>
